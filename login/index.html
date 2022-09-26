@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Login</title>
+</head>
+<body>
+    <label for="username">Username</label>
+    <input type="text" id="username">
+    <br>
+    <label for="username">Password</label>
+    <input type="password" id="password">
+    <Br>
+    <button type="submit" id="login">Login</button>
+    <div class="create-account" id="create-account">
+        <h1>Create account</h1>
+        <label for="new-usernane">Username</label>
+        <input type="text" id="new-username">
+
+        <label for="new-usernane">Password</label>
+        <input type="password" id="new-password">
+        <button type="submit" id="signup">Sign up</button>
+    </div>
+</body>
+</html>
+<script>
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+    const login = document.getElementById('login')
+    const createAccountTab = document.getElementById('create-account');
+    const signUpButton = document.getElementById('signup');
+    const newUsername = document.getElementById("new-username");
+    const newPassword = document.getElementById("new-password");
+
+    var existingUsername = "", existingPassword = "";
+
+    createAccountTab.style.display = "none";
+
+    const loginBtn = () => {
+        login.addEventListener('click', () => {
+            if(username.value != existingUsername && password.value != existingPassword) {
+                alert("Account not found! Please create an account first");
+                createAccount();
+            } else if(username.value == existingUsername && password.value != existingPassword || username.value != existingUsername && password.value == existingPassword) {
+                alert("Username or password is incorrect, Please try again");
+            } else {
+                alert("Login successful");
+            }
+        })
+    }
+
+    const createAccount = () => {
+        createAccountTab.style.display = "block";
+    }
+
+    const signUp = () => {
+        signup.addEventListener("click", () => {
+            existingUsername = newUsername.value;
+            existingPassword = newPassword.value;
+            setTimeout(() => {
+                createAccountTab.style.display = "none";
+            },2000);
+        })
+    }
+
+    loginBtn();
+    signUp();
+</script>
